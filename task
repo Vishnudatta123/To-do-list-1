@@ -1,0 +1,23 @@
+class Task:
+    def __init__(self, title, description, category):
+        self.title = title
+        self.description = description
+        self.category = category
+        self.completed = False
+
+    def mark_completed(self):
+        self.completed = True
+
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "description": self.description,
+            "category": self.category,
+            "completed": self.completed
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        task = cls(data['title'], data['description'], data['category'])
+        task.completed = data['completed']
+        return task
